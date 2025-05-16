@@ -14,11 +14,19 @@ const Layout = ({ children }: LayoutProps) => {
   const userEmail = localStorage.getItem("userEmail") || "User";
 
   useEffect(() => {
+    // Check if user is authenticated
     const isAuthenticated = localStorage.getItem("isAuthenticated");
-    if (!isAuthenticated) {
+    
+    // Only redirect if not authenticated
+    if (!isAuthenticated && location.pathname !== "/") {
+      toast({
+        title: "Authentication required",
+        description: "Please log in to access this page",
+        variant: "destructive",
+      });
       navigate("/");
     }
-  }, [navigate]);
+  }, [navigate, location.pathname]);
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
