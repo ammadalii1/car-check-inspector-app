@@ -165,6 +165,14 @@ const InspectionDetail = () => {
             <span className="font-medium">{new Date(inspection.createdAt).toLocaleDateString()}</span>
           </div>
         </div>
+        
+        {inspection.status === "completed" && (
+          <div className="mt-4">
+            <Button onClick={() => navigate(`/report/${inspection.id}`)}>
+              View Inspection Report
+            </Button>
+          </div>
+        )}
       </div>
 
       <div className="space-y-4">

@@ -1,6 +1,7 @@
 
 export interface InspectionItem {
   status: "working" | "not-working" | "not-applicable";
+  rating?: number; // 1-5 stars rating
   images: string[];
   notes?: string;
 }
@@ -19,6 +20,7 @@ export interface InspectionData {
   categories: {
     [categoryName: string]: CategoryData;
   };
+  overallRating?: number; // Average of all ratings
 }
 
 export interface InspectionCategory {
