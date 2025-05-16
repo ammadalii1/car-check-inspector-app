@@ -19,7 +19,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Auth />} />
+          {/* Redirecting root to dashboard */}
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/new-inspection" element={<NewInspection />} />
           <Route path="/inspection/:id" element={<InspectionDetail />} />

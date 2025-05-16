@@ -1,5 +1,4 @@
 
-import { useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
@@ -13,20 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const userEmail = localStorage.getItem("userEmail") || "User";
 
-  useEffect(() => {
-    // Check if user is authenticated
-    const isAuthenticated = localStorage.getItem("isAuthenticated");
-    
-    // Only redirect if not authenticated
-    if (!isAuthenticated && location.pathname !== "/") {
-      toast({
-        title: "Authentication required",
-        description: "Please log in to access this page",
-        variant: "destructive",
-      });
-      navigate("/");
-    }
-  }, [navigate, location.pathname]);
+  // Authentication check has been removed
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
